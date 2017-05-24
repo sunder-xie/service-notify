@@ -1,0 +1,20 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: ${notify.zone}
+
+server:
+  port: ${notify.port}
+
+spring:
+  application:
+    name: service-notify
+  cloud:
+    config:
+      label: master
+      profile: dev
+      discovery:
+        enabled: true
+        service-id: config-server
+  zipkin:
+    base-url: ${notify.zipkin.url}

@@ -1,0 +1,8 @@
+server:
+  port: ${notify.port}
+
+spring:
+  application:
+    name: service-notify
+#  zipkin:
+#    base-url: ${notify.zipkin.url}

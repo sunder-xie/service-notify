@@ -18,6 +18,7 @@ public class SmsController implements SmsAPI {
     @Value("${notify.name}")
     private String serviceName;
 
+
     @Override
     public String sendSms(@RequestBody SmsParam smsParam) {
         return "I am "+ serviceName+ ", phone: " + smsParam.getPhone();

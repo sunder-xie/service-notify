@@ -25,6 +25,3 @@ mybatis:
   mapperLocations: classpath:mybatis/*.xml
   typeAliasesPackage: com.faker.notify.entity
 
-logging:
-  config: classpath:log4j2.xml
-

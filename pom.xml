@@ -49,6 +49,24 @@
 
             <dependency>
                 <groupId>com.example</groupId>
+                <artifactId>service-notify-dao</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>service-notify-consumer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>service-notify-boot</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.example</groupId>
                 <artifactId>service-biz-api</artifactId>
                 <version>${biz.version}</version>
             </dependency>

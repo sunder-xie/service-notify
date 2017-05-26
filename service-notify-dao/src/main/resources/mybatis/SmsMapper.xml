@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.faker.notify.dao.SmsMapper" >
+  <resultMap id="BaseResultMap" type="com.faker.notify.entity.Sms" >
+    <id column="sms_id" property="smsId" jdbcType="BIGINT" />
+    <result column="template_id" property="templateId" jdbcType="TINYINT" />
+    <result column="template_code" property="templateCode" jdbcType="VARCHAR" />
+    <result column="serial_no" property="serialNo" jdbcType="VARCHAR" />
+    <result column="target_phone" property="targetPhone" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="provider_status" property="providerStatus" jdbcType="VARCHAR" />
+    <result column="provider" property="provider" jdbcType="TINYINT" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="fail_reason" property="failReason" jdbcType="VARCHAR" />
+    <result column="extend" property="extend" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="sys_time" property="sysTime" jdbcType="TIMESTAMP" />
+    <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sms_id, template_id, template_code, serial_no, target_phone, status, provider_status, 
+    provider, content, fail_reason, extend, create_time, update_time, sys_time, is_deleted
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from notify_sms_log
+    where sms_id = #{smsId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from notify_sms_log
+    where sms_id = #{smsId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.faker.notify.entity.Sms" >
+    insert into notify_sms_log (sms_id, template_id, template_code, 
+      serial_no, target_phone, status, 
+      provider_status, provider, content, 
+      fail_reason, extend, create_time, 
+      update_time, sys_time, is_deleted
+      )
+    values (#{smsId,jdbcType=BIGINT}, #{templateId,jdbcType=TINYINT}, #{templateCode,jdbcType=VARCHAR}, 
+      #{serialNo,jdbcType=VARCHAR}, #{targetPhone,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
+      #{providerStatus,jdbcType=VARCHAR}, #{provider,jdbcType=TINYINT}, #{content,jdbcType=VARCHAR}, 
+      #{failReason,jdbcType=VARCHAR}, #{extend,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{sysTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.faker.notify.entity.Sms" >
+    insert into notify_sms_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="smsId != null" >
+        sms_id,
+      </if>
+      <if test="templateId != null" >
+        template_id,
+      </if>
+      <if test="templateCode != null" >
+        template_code,
+      </if>
+      <if test="serialNo != null" >
+        serial_no,
+      </if>
+      <if test="targetPhone != null" >
+        target_phone,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="providerStatus != null" >
+        provider_status,
+      </if>
+      <if test="provider != null" >
+        provider,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="failReason != null" >
+        fail_reason,
+      </if>
+      <if test="extend != null" >
+        extend,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="sysTime != null" >
+        sys_time,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="smsId != null" >
+        #{smsId,jdbcType=BIGINT},
+      </if>
+      <if test="templateId != null" >
+        #{templateId,jdbcType=TINYINT},
+      </if>
+      <if test="templateCode != null" >
+        #{templateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNo != null" >
+        #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="targetPhone != null" >
+        #{targetPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="providerStatus != null" >
+        #{providerStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="provider != null" >
+        #{provider,jdbcType=TINYINT},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="failReason != null" >
+        #{failReason,jdbcType=VARCHAR},
+      </if>
+      <if test="extend != null" >
+        #{extend,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysTime != null" >
+        #{sysTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.faker.notify.entity.Sms" >
+    update notify_sms_log
+    <set >
+      <if test="templateId != null" >
+        template_id = #{templateId,jdbcType=TINYINT},
+      </if>
+      <if test="templateCode != null" >
+        template_code = #{templateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNo != null" >
+        serial_no = #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="targetPhone != null" >
+        target_phone = #{targetPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="providerStatus != null" >
+        provider_status = #{providerStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="provider != null" >
+        provider = #{provider,jdbcType=TINYINT},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="failReason != null" >
+        fail_reason = #{failReason,jdbcType=VARCHAR},
+      </if>
+      <if test="extend != null" >
+        extend = #{extend,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysTime != null" >
+        sys_time = #{sysTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where sms_id = #{smsId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.faker.notify.entity.Sms" >
+    update notify_sms_log
+    set template_id = #{templateId,jdbcType=TINYINT},
+      template_code = #{templateCode,jdbcType=VARCHAR},
+      serial_no = #{serialNo,jdbcType=VARCHAR},
+      target_phone = #{targetPhone,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      provider_status = #{providerStatus,jdbcType=VARCHAR},
+      provider = #{provider,jdbcType=TINYINT},
+      content = #{content,jdbcType=VARCHAR},
+      fail_reason = #{failReason,jdbcType=VARCHAR},
+      extend = #{extend,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      sys_time = #{sysTime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where sms_id = #{smsId,jdbcType=BIGINT}
+  </update>
+</mapper>

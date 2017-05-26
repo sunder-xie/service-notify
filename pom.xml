@@ -9,6 +9,8 @@
     <modules>
         <module>service-notify-api</module>
         <module>service-notify-boot</module>
+        <module>service-notify-consumer</module>
+        <module>service-notify-dao</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -28,11 +30,17 @@
         <java.version>1.8</java.version>
         <spring-cloud.version>Dalston.RELEASE</spring-cloud.version>
         <biz.version>0.0.1-SNAPSHOT</biz.version>
+        <mysql.version>5.1.38</mysql.version>
+        <mybatis.version>1.1.1</mybatis.version>
+        <druid.version>1.0.23</druid.version>
+        <swagger.version>2.2.2</swagger.version>
+        <fastjson.version>1.2.29</fastjson.version>
     </properties>
 
 
     <dependencyManagement>
         <dependencies>
+            <!-- api dependency -->
             <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>service-notify-api</artifactId>
@@ -45,6 +53,46 @@
                 <version>${biz.version}</version>
             </dependency>
 
+            <!-- dao dependency -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <!--common dependency -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <!-- Swagger -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <!-- test dependency -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -52,6 +100,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            
 
         </dependencies>
 

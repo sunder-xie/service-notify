@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.faker.notify.dao.TemplateMapper" >
+  <resultMap id="BaseResultMap" type="com.faker.notify.entity.Template" >
+    <id column="template_id" property="templateId" jdbcType="INTEGER" />
+    <result column="template_code" property="templateCode" jdbcType="VARCHAR" />
+    <result column="template_name" property="templateName" jdbcType="VARCHAR" />
+    <result column="provider_template_code" property="providerTemplateCode" jdbcType="VARCHAR" />
+    <result column="signature" property="signature" jdbcType="TINYINT" />
+    <result column="map_rule" property="mapRule" jdbcType="VARCHAR" />
+    <result column="format_string" property="formatString" jdbcType="VARCHAR" />
+    <result column="provider" property="provider" jdbcType="TINYINT" />
+    <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="extend" property="extend" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="sys_time" property="sysTime" jdbcType="TIMESTAMP" />
+    <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    template_id, template_code, template_name, provider_template_code, signature, map_rule, 
+    format_string, provider, type, extend, create_time, update_time, sys_time, is_deleted
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from notify_sms_template
+    where template_id = #{templateId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from notify_sms_template
+    where template_id = #{templateId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.faker.notify.entity.Template" >
+    insert into notify_sms_template (template_id, template_code, template_name, 
+      provider_template_code, signature, map_rule, 
+      format_string, provider, type, 
+      extend, create_time, update_time, 
+      sys_time, is_deleted)
+    values (#{templateId,jdbcType=INTEGER}, #{templateCode,jdbcType=VARCHAR}, #{templateName,jdbcType=VARCHAR}, 
+      #{providerTemplateCode,jdbcType=VARCHAR}, #{signature,jdbcType=TINYINT}, #{mapRule,jdbcType=VARCHAR}, 
+      #{formatString,jdbcType=VARCHAR}, #{provider,jdbcType=TINYINT}, #{type,jdbcType=TINYINT}, 
+      #{extend,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{sysTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.faker.notify.entity.Template" >
+    insert into notify_sms_template
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="templateId != null" >
+        template_id,
+      </if>
+      <if test="templateCode != null" >
+        template_code,
+      </if>
+      <if test="templateName != null" >
+        template_name,
+      </if>
+      <if test="providerTemplateCode != null" >
+        provider_template_code,
+      </if>
+      <if test="signature != null" >
+        signature,
+      </if>
+      <if test="mapRule != null" >
+        map_rule,
+      </if>
+      <if test="formatString != null" >
+        format_string,
+      </if>
+      <if test="provider != null" >
+        provider,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="extend != null" >
+        extend,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="sysTime != null" >
+        sys_time,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="templateId != null" >
+        #{templateId,jdbcType=INTEGER},
+      </if>
+      <if test="templateCode != null" >
+        #{templateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="templateName != null" >
+        #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="providerTemplateCode != null" >
+        #{providerTemplateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null" >
+        #{signature,jdbcType=TINYINT},
+      </if>
+      <if test="mapRule != null" >
+        #{mapRule,jdbcType=VARCHAR},
+      </if>
+      <if test="formatString != null" >
+        #{formatString,jdbcType=VARCHAR},
+      </if>
+      <if test="provider != null" >
+        #{provider,jdbcType=TINYINT},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="extend != null" >
+        #{extend,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysTime != null" >
+        #{sysTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.faker.notify.entity.Template" >
+    update notify_sms_template
+    <set >
+      <if test="templateCode != null" >
+        template_code = #{templateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="templateName != null" >
+        template_name = #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="providerTemplateCode != null" >
+        provider_template_code = #{providerTemplateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null" >
+        signature = #{signature,jdbcType=TINYINT},
+      </if>
+      <if test="mapRule != null" >
+        map_rule = #{mapRule,jdbcType=VARCHAR},
+      </if>
+      <if test="formatString != null" >
+        format_string = #{formatString,jdbcType=VARCHAR},
+      </if>
+      <if test="provider != null" >
+        provider = #{provider,jdbcType=TINYINT},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="extend != null" >
+        extend = #{extend,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysTime != null" >
+        sys_time = #{sysTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where template_id = #{templateId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.faker.notify.entity.Template" >
+    update notify_sms_template
+    set template_code = #{templateCode,jdbcType=VARCHAR},
+      template_name = #{templateName,jdbcType=VARCHAR},
+      provider_template_code = #{providerTemplateCode,jdbcType=VARCHAR},
+      signature = #{signature,jdbcType=TINYINT},
+      map_rule = #{mapRule,jdbcType=VARCHAR},
+      format_string = #{formatString,jdbcType=VARCHAR},
+      provider = #{provider,jdbcType=TINYINT},
+      type = #{type,jdbcType=TINYINT},
+      extend = #{extend,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      sys_time = #{sysTime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where template_id = #{templateId,jdbcType=INTEGER}
+  </update>
+</mapper>

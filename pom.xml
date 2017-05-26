@@ -9,7 +9,6 @@
     <modules>
         <module>service-notify-api</module>
         <module>service-notify-boot</module>
-        <module>service-notify-consumer</module>
         <module>service-notify-dao</module>
     </modules>
     <packaging>pom</packaging>
@@ -51,12 +50,6 @@
             <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>service-notify-dao</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.example</groupId>
-                <artifactId>service-notify-consumer</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -118,6 +111,12 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>0.9.0.1</version>
             </dependency>
 
             <!-- mvc dependency-->

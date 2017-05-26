@@ -5,7 +5,7 @@ import java.util.Date;
 public class Sms {
     private Long smsId;
 
-    private Byte templateId;
+    private Integer templateId;
 
     private String templateCode;
 
@@ -13,11 +13,11 @@ public class Sms {
 
     private String targetPhone;
 
-    private Byte status;
+    private Integer status;
 
     private String providerStatus;
 
-    private Byte provider;
+    private Integer provider;
 
     private String content;
 
@@ -31,7 +31,7 @@ public class Sms {
 
     private Date sysTime;
 
-    private Byte isDeleted;
+    private Integer isDeleted;
 
     public Long getSmsId() {
         return smsId;
@@ -41,11 +41,11 @@ public class Sms {
         this.smsId = smsId;
     }
 
-    public Byte getTemplateId() {
+    public Integer getTemplateId() {
         return templateId;
     }
 
-    public void setTemplateId(Byte templateId) {
+    public void setTemplateId(Integer templateId) {
         this.templateId = templateId;
     }
 
@@ -54,7 +54,7 @@ public class Sms {
     }
 
     public void setTemplateCode(String templateCode) {
-        this.templateCode = templateCode == null ? null : templateCode.trim();
+        this.templateCode = templateCode;
     }
 
     public String getSerialNo() {
@@ -62,7 +62,7 @@ public class Sms {
     }
 
     public void setSerialNo(String serialNo) {
-        this.serialNo = serialNo == null ? null : serialNo.trim();
+        this.serialNo = serialNo;
     }
 
     public String getTargetPhone() {
@@ -70,14 +70,14 @@ public class Sms {
     }
 
     public void setTargetPhone(String targetPhone) {
-        this.targetPhone = targetPhone == null ? null : targetPhone.trim();
+        this.targetPhone = targetPhone;
     }
 
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -86,14 +86,14 @@ public class Sms {
     }
 
     public void setProviderStatus(String providerStatus) {
-        this.providerStatus = providerStatus == null ? null : providerStatus.trim();
+        this.providerStatus = providerStatus;
     }
 
-    public Byte getProvider() {
+    public Integer getProvider() {
         return provider;
     }
 
-    public void setProvider(Byte provider) {
+    public void setProvider(Integer provider) {
         this.provider = provider;
     }
 
@@ -102,7 +102,7 @@ public class Sms {
     }
 
     public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+        this.content = content;
     }
 
     public String getFailReason() {
@@ -110,7 +110,7 @@ public class Sms {
     }
 
     public void setFailReason(String failReason) {
-        this.failReason = failReason == null ? null : failReason.trim();
+        this.failReason = failReason;
     }
 
     public String getExtend() {
@@ -118,7 +118,7 @@ public class Sms {
     }
 
     public void setExtend(String extend) {
-        this.extend = extend == null ? null : extend.trim();
+        this.extend = extend;
     }
 
     public Date getCreateTime() {
@@ -145,11 +145,11 @@ public class Sms {
         this.sysTime = sysTime;
     }
 
-    public Byte getIsDeleted() {
+    public Integer getIsDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(Byte isDeleted) {
+    public void setIsDeleted(Integer isDeleted) {
         this.isDeleted = isDeleted;
     }
 }

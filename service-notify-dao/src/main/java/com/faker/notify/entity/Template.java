@@ -11,15 +11,15 @@ public class Template {
 
     private String providerTemplateCode;
 
-    private Byte signature;
+    private Integer signature;
 
     private String mapRule;
 
     private String formatString;
 
-    private Byte provider;
+    private Integer provider;
 
-    private Byte type;
+    private Integer type;
 
     private String extend;
 
@@ -29,7 +29,7 @@ public class Template {
 
     private Date sysTime;
 
-    private Byte isDeleted;
+    private Integer isDeleted;
 
     public Integer getTemplateId() {
         return templateId;
@@ -44,7 +44,7 @@ public class Template {
     }
 
     public void setTemplateCode(String templateCode) {
-        this.templateCode = templateCode == null ? null : templateCode.trim();
+        this.templateCode = templateCode;
     }
 
     public String getTemplateName() {
@@ -52,7 +52,7 @@ public class Template {
     }
 
     public void setTemplateName(String templateName) {
-        this.templateName = templateName == null ? null : templateName.trim();
+        this.templateName = templateName;
     }
 
     public String getProviderTemplateCode() {
@@ -60,14 +60,14 @@ public class Template {
     }
 
     public void setProviderTemplateCode(String providerTemplateCode) {
-        this.providerTemplateCode = providerTemplateCode == null ? null : providerTemplateCode.trim();
+        this.providerTemplateCode = providerTemplateCode;
     }
 
-    public Byte getSignature() {
+    public Integer getSignature() {
         return signature;
     }
 
-    public void setSignature(Byte signature) {
+    public void setSignature(Integer signature) {
         this.signature = signature;
     }
 
@@ -76,7 +76,7 @@ public class Template {
     }
 
     public void setMapRule(String mapRule) {
-        this.mapRule = mapRule == null ? null : mapRule.trim();
+        this.mapRule = mapRule;
     }
 
     public String getFormatString() {
@@ -84,22 +84,22 @@ public class Template {
     }
 
     public void setFormatString(String formatString) {
-        this.formatString = formatString == null ? null : formatString.trim();
+        this.formatString = formatString;
     }
 
-    public Byte getProvider() {
+    public Integer getProvider() {
         return provider;
     }
 
-    public void setProvider(Byte provider) {
+    public void setProvider(Integer provider) {
         this.provider = provider;
     }
 
-    public Byte getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(Byte type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
@@ -108,7 +108,7 @@ public class Template {
     }
 
     public void setExtend(String extend) {
-        this.extend = extend == null ? null : extend.trim();
+        this.extend = extend;
     }
 
     public Date getCreateTime() {
@@ -135,11 +135,11 @@ public class Template {
         this.sysTime = sysTime;
     }
 
-    public Byte getIsDeleted() {
+    public Integer getIsDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(Byte isDeleted) {
+    public void setIsDeleted(Integer isDeleted) {
         this.isDeleted = isDeleted;
     }
 }

@@ -24,9 +24,13 @@ spring:
       testOnReturn: false
       poolPreparedStatements: true
       maxOpenPreparedStatements: 20
+
 #  zipkin:
 #    base-url: ${notify.zipkin.url}
 
 mybatis:
   mapperLocations: classpath:mybatis/*.xml
   typeAliasesPackage: com.faker.notify.entity
+
+logging:
+  config: classpath:log4j2.xml

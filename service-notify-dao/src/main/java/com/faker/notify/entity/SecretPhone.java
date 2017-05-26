@@ -13,7 +13,7 @@ public class SecretPhone {
 
     private String targetPhone;
 
-    private Byte needRecord;
+    private Integer needRecord;
 
     private Date expiredDate;
 
@@ -23,7 +23,7 @@ public class SecretPhone {
 
     private Date sysTime;
 
-    private Byte isDeleted;
+    private Integer isDeleted;
 
     public Long getSecretId() {
         return secretId;
@@ -38,7 +38,7 @@ public class SecretPhone {
     }
 
     public void setSecretPhone(String secretPhone) {
-        this.secretPhone = secretPhone == null ? null : secretPhone.trim();
+        this.secretPhone = secretPhone;
     }
 
     public Long getRelationId() {
@@ -54,7 +54,7 @@ public class SecretPhone {
     }
 
     public void setSourcePhone(String sourcePhone) {
-        this.sourcePhone = sourcePhone == null ? null : sourcePhone.trim();
+        this.sourcePhone = sourcePhone;
     }
 
     public String getTargetPhone() {
@@ -62,14 +62,14 @@ public class SecretPhone {
     }
 
     public void setTargetPhone(String targetPhone) {
-        this.targetPhone = targetPhone == null ? null : targetPhone.trim();
+        this.targetPhone = targetPhone;
     }
 
-    public Byte getNeedRecord() {
+    public Integer getNeedRecord() {
         return needRecord;
     }
 
-    public void setNeedRecord(Byte needRecord) {
+    public void setNeedRecord(Integer needRecord) {
         this.needRecord = needRecord;
     }
 
@@ -86,7 +86,7 @@ public class SecretPhone {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 
     public Date getCreateTime() {
@@ -105,11 +105,11 @@ public class SecretPhone {
         this.sysTime = sysTime;
     }
 
-    public Byte getIsDeleted() {
+    public Integer getIsDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(Byte isDeleted) {
+    public void setIsDeleted(Integer isDeleted) {
         this.isDeleted = isDeleted;
     }
 }

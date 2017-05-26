@@ -52,7 +52,7 @@ public class KafkaReceiver extends KafkaBase {
         records.forEach(record -> {
             try {
                 Message message = JSONObject.parseObject(record.value(), Message.class);
-                Action action = listenerMap.get(message.getTag()).doConsume();
+                Action action = listenerMap.get(message.getTag()).doConsume(message);
                 switch (action) {
                     case Resume:
                         logger.warn("该笔消息消费失败,key:{}", message.getKey());

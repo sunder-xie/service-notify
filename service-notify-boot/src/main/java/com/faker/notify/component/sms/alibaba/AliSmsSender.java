@@ -16,13 +16,10 @@ import com.taobao.api.request.AlibabaAliqinFcSmsNumSendRequest;
 import com.taobao.api.request.AlibabaAliqinFcTtsNumSinglecallRequest;
 import com.taobao.api.response.AlibabaAliqinFcSmsNumSendResponse;
 import com.taobao.api.response.AlibabaAliqinFcTtsNumSinglecallResponse;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;

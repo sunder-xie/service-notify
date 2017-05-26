@@ -11,6 +11,7 @@ import java.io.Serializable;
 @ApiModel("分页入参")
 public class PageParam implements Serializable {
 
+    private static final long serialVersionUID = -1657978063076680691L;
     private Integer pageSize;
 
     private Integer pageIndex;

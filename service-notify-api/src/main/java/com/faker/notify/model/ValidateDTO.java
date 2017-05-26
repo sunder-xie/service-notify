@@ -10,8 +10,8 @@ import io.swagger.annotations.ApiModelProperty;
 public class ValidateDTO {
     @ApiModelProperty(value = "验证码接收方手机号")
     private String targetPhone;
-    @ApiModelProperty(value = "模板代码")
-    private String templateCode;
+    @ApiModelProperty(value = "验证码")
+    private String verifyCode;
     @ApiModelProperty(value = "是否验证成功就移除验证码,true-删除,false-不删除e")
     private boolean remove;
     @ApiModelProperty(value = "标识该次验证的key")
@@ -25,12 +25,12 @@ public class ValidateDTO {
         this.targetPhone = targetPhone;
     }
 
-    public String getTemplateCode() {
-        return templateCode;
+    public String getVerifyCode() {
+        return verifyCode;
     }
 
-    public void setTemplateCode(String templateCode) {
-        this.templateCode = templateCode;
+    public void setVerifyCode(String verifyCode) {
+        this.verifyCode = verifyCode;
     }
 
     public String getKey() {
@@ -39,5 +39,13 @@ public class ValidateDTO {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public boolean isRemove() {
+        return remove;
+    }
+
+    public void setRemove(boolean remove) {
+        this.remove = remove;
     }
 }

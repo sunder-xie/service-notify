@@ -1,6 +1,7 @@
 package com.faker.notify.api;
 
 import com.faker.notify.model.TemplateParam;
+import com.faker.notify.model.TemplateQueryParam;
 import com.faker.notify.model.TemplateResultDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -19,12 +20,12 @@ public interface TemplateAPI {
     @ApiOperation(value = "添加模板", notes = "")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public String add(@RequestBody TemplateParam templateDTO);
+    public Integer add(@RequestBody TemplateParam templateDTO);
 
     @ApiOperation(value = "查询模板", notes = "")
     @RequestMapping(value = "/query", method = RequestMethod.GET)
     @ResponseBody
-    public List<TemplateResultDTO> query(@RequestBody TemplateParam templateDTO);
+    public List<TemplateResultDTO> query(@RequestBody TemplateQueryParam templateQueryParam);
 
     @ApiOperation(value = "更新模板", notes = "")
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
@@ -35,5 +36,5 @@ public interface TemplateAPI {
     @RequestMapping(value = "/delete/{templateId}", method = RequestMethod.DELETE)
     @ResponseBody
     public Integer delete(@ApiParam(name = "templateId", value = "templateId", required = true)
-                          @PathVariable Long templateId);
+                          @PathVariable Integer templateId);
 }

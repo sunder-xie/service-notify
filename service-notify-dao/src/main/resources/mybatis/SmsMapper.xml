@@ -29,23 +29,11 @@
     where sms_id = #{smsId,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from notify_sms_log
+    UPDATE notify_sms_log
+    SET is_deleted = 1
     where sms_id = #{smsId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.faker.notify.entity.Sms" >
-    insert into notify_sms_log (sms_id, template_id, template_code, 
-      serial_no, target_phone, status, 
-      provider_status, provider, content, 
-      fail_reason, extend, create_time, 
-      update_time, sys_time, is_deleted
-      )
-    values (#{smsId,jdbcType=BIGINT}, #{templateId,jdbcType=TINYINT}, #{templateCode,jdbcType=VARCHAR}, 
-      #{serialNo,jdbcType=VARCHAR}, #{targetPhone,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
-      #{providerStatus,jdbcType=VARCHAR}, #{provider,jdbcType=TINYINT}, #{content,jdbcType=VARCHAR}, 
-      #{failReason,jdbcType=VARCHAR}, #{extend,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{sysTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=TINYINT}
-      )
-  </insert>
+
   <insert id="insertSelective" parameterType="com.faker.notify.entity.Sms" >
     insert into notify_sms_log
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -189,24 +177,6 @@
         is_deleted = #{isDeleted,jdbcType=TINYINT},
       </if>
     </set>
-    where sms_id = #{smsId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.faker.notify.entity.Sms" >
-    update notify_sms_log
-    set template_id = #{templateId,jdbcType=TINYINT},
-      template_code = #{templateCode,jdbcType=VARCHAR},
-      serial_no = #{serialNo,jdbcType=VARCHAR},
-      target_phone = #{targetPhone,jdbcType=VARCHAR},
-      status = #{status,jdbcType=TINYINT},
-      provider_status = #{providerStatus,jdbcType=VARCHAR},
-      provider = #{provider,jdbcType=TINYINT},
-      content = #{content,jdbcType=VARCHAR},
-      fail_reason = #{failReason,jdbcType=VARCHAR},
-      extend = #{extend,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      sys_time = #{sysTime,jdbcType=TIMESTAMP},
-      is_deleted = #{isDeleted,jdbcType=TINYINT}
     where sms_id = #{smsId,jdbcType=BIGINT}
   </update>
 </mapper>

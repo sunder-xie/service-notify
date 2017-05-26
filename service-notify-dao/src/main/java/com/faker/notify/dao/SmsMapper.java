@@ -7,13 +7,10 @@ import org.apache.ibatis.annotations.Mapper;
 public interface SmsMapper {
     int deleteByPrimaryKey(Long smsId);
 
-    int insert(Sms record);
-
     int insertSelective(Sms record);
 
     Sms selectByPrimaryKey(Long smsId);
 
     int updateByPrimaryKeySelective(Sms record);
 
-    int updateByPrimaryKey(Sms record);
 }

@@ -7,13 +7,10 @@ import org.apache.ibatis.annotations.Mapper;
 public interface SecretPhoneMapper {
     int deleteByPrimaryKey(Long secretId);
 
-    int insert(SecretPhone record);
-
     int insertSelective(SecretPhone record);
 
     SecretPhone selectByPrimaryKey(Long secretId);
 
     int updateByPrimaryKeySelective(SecretPhone record);
 
-    int updateByPrimaryKey(SecretPhone record);
 }

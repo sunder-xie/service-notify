@@ -27,22 +27,12 @@
     from notify_sms_template
     where template_id = #{templateId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from notify_sms_template
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    UPDATE notify_sms_template
+    SET is_deleted = 1
     where template_id = #{templateId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.faker.notify.entity.Template" >
-    insert into notify_sms_template (template_id, template_code, template_name, 
-      provider_template_code, signature, map_rule, 
-      format_string, provider, type, 
-      extend, create_time, update_time, 
-      sys_time, is_deleted)
-    values (#{templateId,jdbcType=INTEGER}, #{templateCode,jdbcType=VARCHAR}, #{templateName,jdbcType=VARCHAR}, 
-      #{providerTemplateCode,jdbcType=VARCHAR}, #{signature,jdbcType=TINYINT}, #{mapRule,jdbcType=VARCHAR}, 
-      #{formatString,jdbcType=VARCHAR}, #{provider,jdbcType=TINYINT}, #{type,jdbcType=TINYINT}, 
-      #{extend,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{sysTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=TINYINT})
-  </insert>
+
   <insert id="insertSelective" parameterType="com.faker.notify.entity.Template" >
     insert into notify_sms_template
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -177,23 +167,6 @@
         is_deleted = #{isDeleted,jdbcType=TINYINT},
       </if>
     </set>
-    where template_id = #{templateId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.faker.notify.entity.Template" >
-    update notify_sms_template
-    set template_code = #{templateCode,jdbcType=VARCHAR},
-      template_name = #{templateName,jdbcType=VARCHAR},
-      provider_template_code = #{providerTemplateCode,jdbcType=VARCHAR},
-      signature = #{signature,jdbcType=TINYINT},
-      map_rule = #{mapRule,jdbcType=VARCHAR},
-      format_string = #{formatString,jdbcType=VARCHAR},
-      provider = #{provider,jdbcType=TINYINT},
-      type = #{type,jdbcType=TINYINT},
-      extend = #{extend,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      sys_time = #{sysTime,jdbcType=TIMESTAMP},
-      is_deleted = #{isDeleted,jdbcType=TINYINT}
     where template_id = #{templateId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -12,6 +12,8 @@
 2. 搭建部署kafka,建立notify这个topic
 3. 启动redis用于验证码存储
 4. 启动spring-cloud相关应用——[传送门](https://github.com/caicai457614705/cloud-server)
+5. 创建数据库表, sql语句见sql.txt
+6. 启动本项目, 使用swagger或者postman等工具进行测试.
 
 # 功能设计说明
 1. 用kafka队列为异步任务提供支持。

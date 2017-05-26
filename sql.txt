@@ -1,0 +1,58 @@
+# 短信模板表
+CREATE TABLE `notify_sms_template` (
+  `template_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '模板序号',
+  `template_code` varchar(20) NOT NULL DEFAULT '' COMMENT '模板代码',
+  `template_name` varchar(32) NOT NULL DEFAULT '' COMMENT '模板名称',
+  `provider_template_code` varchar(32) NOT NULL DEFAULT '' COMMENT '三方服务的模板code',
+  `signature` tinyint(4) NOT NULL DEFAULT '1' COMMENT '模板签名编号',
+  `map_rule` varchar(255) NOT NULL DEFAULT '' COMMENT '模板参数映射关系',
+  `format_string` varchar(255) NOT NULL DEFAULT '' COMMENT '模板格式化文案',
+  `provider` tinyint(4) NOT NULL DEFAULT '1' COMMENT '供应商id 1-阿里大鱼 2-叮咚云 3-云之讯',
+  `type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '模板类型 1-文本模板,2-语音模板',
+  `extend` varchar(255) NOT NULL DEFAULT '' COMMENT '扩展参数',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
+  `sys_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '系统时间',
+  `is_deleted` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否已删除 1-是 0-否',
+  PRIMARY KEY (`template_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COMMENT='短信模板信息表';
+
+# 短信日志表
+CREATE TABLE `notify_sms_log` (
+  `sms_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '消息序号',
+  `template_id` tinyint(4) NOT NULL DEFAULT '0' COMMENT '模板序号',
+  `template_code` varchar(20) NOT NULL DEFAULT '' COMMENT '模板代码',
+  `serial_no` varchar(50) NOT NULL DEFAULT '' COMMENT '三方服务流水号',
+  `target_phone` varchar(18) NOT NULL DEFAULT '' COMMENT '接受该短信的手机号',
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '消息状态 0-未发出,1-已发出,2-已送达,3-失败',
+  `provider_status` varchar(32) NOT NULL DEFAULT '' COMMENT '三方服务返回的消息状态',
+  `provider` tinyint(4) NOT NULL DEFAULT '1' COMMENT '供应商id 1-阿里大鱼 2-叮咚云 3-云之讯',
+  `content` varchar(255) CHARACTER SET utf8mb4 NOT NULL DEFAULT '' COMMENT '消息内容',
+  `fail_reason` varchar(255) NOT NULL DEFAULT '' COMMENT '失败原因',
+  `extend` varchar(255) NOT NULL DEFAULT '' COMMENT '扩展参数',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
+  `sys_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '系统时间',
+  `is_deleted` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否已删除 1-是 0-否',
+  PRIMARY KEY (`sms_id`),
+  KEY `phone_index` (`target_phone`),
+  KEY `update_time_index` (`update_time`),
+  KEY `status_index` (`status`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COMMENT='短息记录日志表';
+
+# 程序中暂时没用到, 有空可能会集成这部分
+# 虚拟小号绑定关系表
+CREATE TABLE `notify_secret_phone` (
+  `secret_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '虚拟号序号',
+  `secret_phone` varchar(18) NOT NULL DEFAULT '' COMMENT '虚拟号',
+  `relation_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '关联关系id',
+  `source_phone` varchar(18) NOT NULL DEFAULT '' COMMENT '拨号方手机号',
+  `target_phone` varchar(18) NOT NULL DEFAULT '' COMMENT '接听方手机号',
+  `need_record` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否需要录音 1-是 0-否',
+  `expired_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '截止有效日期',
+  `remark` varchar(255) NOT NULL DEFAULT '' COMMENT '备注',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `sys_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '系统时间',
+  `is_deleted` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否已删除 1-是 0-否',
+  PRIMARY KEY (`secret_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='虚拟小号绑定关系表';
